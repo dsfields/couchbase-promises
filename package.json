@@ -1,0 +1,39 @@
+{
+  "name": "couchbase-promises",
+  "longName": "Couchbase Promises",
+  "description": "An A+ Promises wrapper for the Couchbase SDK.",
+  "version": "1.0.0",
+
+  "dependencies": {
+    "bluebird": "^3.0.5",
+    "couchbase": "^2.1.2"
+  },
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "gulp": "^3.9.0",
+    "gulp-eslint": "^1.1.0",
+    "gulp-istanbul": "^0.10.2",
+    "gulp-jsvalidate": "^2.1.0",
+    "gulp-mocha": "^2.2.0",
+    "istanbul": "^0.4.0",
+    "mocha": "^2.3.3"
+  },
+  "keywords": [
+    "couchbase",
+    "promises",
+    "bluebird",
+    "data",
+    "nosql"
+  ],
+  "license": "MIT",
+  "main": "./lib/couchbase",
+  "private": "false",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dsfields/couchbase-promises"
+  },
+  "scripts": {
+    "lint": "gulp lint",
+    "test": "gulp test"
+  }
+}
