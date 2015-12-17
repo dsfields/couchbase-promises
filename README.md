@@ -16,9 +16,9 @@ Usage is almost exactly the same as the native SDK, but with the added ability t
 A user repository module with a simple lookup...
 
 ```js
-var couchbase = require('couchbase-promises');
-var cluster = new couchbase.Cluster('couchbase://127.0.0.1');
-var bucket = cluster.openBucket();
+let couchbase = require('couchbase-promises');
+let cluster = new couchbase.Cluster('couchbase://127.0.0.1');
+let bucket = cluster.openBucket();
 
 function UserNotFoundError() {
   Error.call(this);
@@ -38,7 +38,7 @@ module.exports = {
           }
         };
       }).catch(couchbase.Error, function(e) {
-        if (e.code == couchbase.errors.keyNotFound)
+        if (e.code === couchbase.errors.keyNotFound)
           throw new UserNotFoundError();
 
         throw e;
