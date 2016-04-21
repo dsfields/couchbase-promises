@@ -4,9 +4,9 @@
   "description": "An A+ Promises wrapper for the Couchbase SDK.",
   "version": "1.0.1",
 
-  "dependencies": {
-    "bluebird": "^3.0.5",
-    "couchbase": "^2.1.2"
+  "peerDependencies": {
+    "bluebird": "3.x",
+    "couchbase": "2.x"
   },
   "devDependencies": {
     "chai": "^3.4.1",
@@ -16,7 +16,9 @@
     "gulp-jsvalidate": "^2.1.0",
     "gulp-mocha": "^2.2.0",
     "istanbul": "^0.4.0",
-    "mocha": "^2.3.3"
+    "mocha": "^2.3.3",
+    "bluebird": "3.x",
+    "couchbase": "2.x"
   },
   "keywords": [
     "couchbase",
