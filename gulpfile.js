@@ -22,4 +22,4 @@ gulp.task('jsvalidate', function() {
     .pipe(jsvalidate());
 });
 
-gulp.task('default', ['lint', 'test']);
+gulp.task('default', ['test']);
