@@ -1,115 +1,141 @@
 'use strict';
 
-var chai = require('chai');
-var assert = chai.assert;
+const chai = require('chai');
 
-var Bucket = require('../../lib/bucket');
+const Bucket = require('../../lib/bucket');
+const LookupInBuilder = require('../../lib/lookup-in-builder');
+const MutateInBuilder = require('../../lib/mutate-in-builder');
 
-describe('Bucket', function() {
-  describe('prototype', function() {
-    var proto = Bucket.prototype;
+const assert = chai.assert;
 
-    describe('#appendAsync()', function() {
-      it('should be a function', function() {
+describe('Bucket', () => {
+  describe('prototype', () => {
+    const proto = Bucket.prototype;
+
+    describe('#appendAsync()', () => {
+      it('should be a function', () => {
         assert.isFunction(proto.appendAsync);
       });
     });
 
-    describe('#counterAsync()', function() {
-      it('should be a function', function() {
+    describe('#counterAsync()', () => {
+      it('should be a function', () => {
         assert.isFunction(proto.counterAsync);
       });
     });
 
-    describe('#getAsync()', function() {
-      it('should be a function', function() {
+    describe('#getAsync()', () => {
+      it('should be a function', () => {
         assert.isFunction(proto.getAsync);
       });
     });
 
-    describe('#getAndLockAsync()', function() {
-      it('should be a function', function() {
+    describe('#getAndLockAsync()', () => {
+      it('should be a function', () => {
         assert.isFunction(proto.getAndLockAsync);
       });
     });
 
-    describe('#getAndTouchAsync()', function() {
-      it('should be a function', function() {
+    describe('#getAndTouchAsync()', () => {
+      it('should be a function', () => {
         assert.isFunction(proto.getAndTouchAsync);
       });
     });
 
-    describe('#getMultiAsync()', function() {
-      it('should be a function', function() {
+    describe('#getMultiAsync()', () => {
+      it('should be a function', () => {
         assert.isFunction(proto.getMultiAsync);
       });
     });
 
-    describe('#getReplicaAsync()', function() {
-      it('should be a function', function() {
+    describe('#getReplicaAsync()', () => {
+      it('should be a function', () => {
         assert.isFunction(proto.getReplicaAsync);
       });
     });
 
-    describe('#insertAsync()', function() {
-      it('should be a function', function() {
+    describe('#insertAsync()', () => {
+      it('should be a function', () => {
         assert.isFunction(proto.insertAsync);
       });
     });
 
-    describe('#managerAsync()', function() {
-      it('should be undefined', function() {
+    describe('#lookupIn()', () => {
+      it('should be a function', () => {
+        assert.isFunction(proto.lookupIn);
+      });
+
+      it('should return an instance of LookupInBuilder', () => {
+        const b = new Bucket({ lookupIn: () => { return {}; } });
+        const look = b.lookupIn();
+        assert.instanceOf(look, LookupInBuilder);
+      });
+    });
+
+    describe('#managerAsync()', () => {
+      it('should be undefined', () => {
         assert.isUndefined(proto.managerAsync);
       });
     });
 
-    describe('#prependAsync()', function() {
-      it('should be a function', function() {
+    describe('#mutateIn()', () => {
+      it('should be a function', () => {
+        assert.isFunction(proto.mutateIn);
+      });
+
+      it('should return an instance of MutateInBuilder', () => {
+        const b = new Bucket({ mutateIn: () => { return {}; } });
+        const mut = b.mutateIn(null, null);
+        assert.instanceOf(mut, MutateInBuilder);
+      });
+    });
+
+    describe('#prependAsync()', () => {
+      it('should be a function', () => {
         assert.isFunction(proto.prependAsync);
       });
     });
 
-    describe('#queryAsync()', function() {
-      it('should be a function', function() {
+    describe('#queryAsync()', () => {
+      it('should be a function', () => {
         assert.isFunction(proto.queryAsync);
       });
     });
 
-    describe('#removeAsync()', function() {
-      it('should be a function', function() {
+    describe('#removeAsync()', () => {
+      it('should be a function', () => {
         assert.isFunction(proto.removeAsync);
       });
     });
 
-    describe('#replaceAsync()', function() {
-      it('should be a function', function() {
+    describe('#replaceAsync()', () => {
+      it('should be a function', () => {
         assert.isFunction(proto.replaceAsync);
       });
     });
 
-    describe('#setTranscoderAsync()', function() {
-      it('should be undefined', function() {
+    describe('#setTranscoderAsync()', () => {
+      it('should be undefined', () => {
         assert.isUndefined(proto.setTranscoderAsync);
       });
     });
 
-    describe('#touchAsync()', function() {
-      it('should be a function', function() {
+    describe('#touchAsync()', () => {
+      it('should be a function', () => {
         assert.isFunction(proto.touchAsync);
       });
     });
 
-    describe('#unlockAsync()', function() {
-      it('should be a function', function() {
+    describe('#unlockAsync()', () => {
+      it('should be a function', () => {
         assert.isFunction(proto.unlockAsync);
       });
     });
 
-    describe('#upsertAsync()', function() {
-      it('should be a function', function() {
+    describe('#upsertAsync()', () => {
+      it('should be a function', () => {
         assert.isFunction(proto.upsertAsync);
       });
     });
-
   });
 });

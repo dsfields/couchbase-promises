@@ -1,22 +1,23 @@
 'use strict';
 
-var chai = require('chai');
-var assert = chai.assert;
+const chai = require('chai');
 
-var Cluster = require('../../lib/cluster');
+const Cluster = require('../../lib/cluster');
 
-describe('Cluster', function() {
-  describe('prototype', function() {
-    var proto = Cluster.prototype;
+const assert = chai.assert;
 
-    describe('#managerAsync()', function() {
-      it('should be undefined', function() {
+describe('Cluster', () => {
+  describe('prototype', () => {
+    const proto = Cluster.prototype;
+
+    describe('#managerAsync()', () => {
+      it('should be undefined', () => {
         assert.isUndefined(proto.managerAsync);
       });
     });
 
-    describe('#openBucketAsync()', function() {
-      it('should be a function', function() {
+    describe('#openBucketAsync()', () => {
+      it('should be a function', () => {
         assert.isFunction(proto.openBucketAsync);
       });
     });

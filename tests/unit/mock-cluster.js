@@ -1,23 +1,24 @@
 'use strict';
 
-var chai = require('chai');
-var assert = chai.assert;
+const chai = require('chai');
 
-var couchbase = require('../../lib/couchbase');
-var MockCluster = couchbase.Mock.Cluster;
+const couchbase = require('../../lib/couchbase');
 
-describe('MockCluster', function() {
-  describe('prototype', function() {
-    var proto = MockCluster.prototype;
+const assert = chai.assert;
+const MockCluster = couchbase.Mock.Cluster;
 
-    describe('#managerAsync()', function() {
-      it('should be undefined', function() {
+describe('MockCluster', () => {
+  describe('prototype', () => {
+    const proto = MockCluster.prototype;
+
+    describe('#managerAsync()', () => {
+      it('should be undefined', () => {
         assert.isUndefined(proto.managerAsync);
       });
     });
 
-    describe('#openBucketAsync()', function() {
-      it('should be a function', function() {
+    describe('#openBucketAsync()', () => {
+      it('should be a function', () => {
         assert.isFunction(proto.openBucketAsync);
       });
     });

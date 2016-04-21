@@ -1,48 +1,48 @@
 'use strict';
 
-var chai = require('chai');
-var assert = chai.assert;
+const chai = require('chai');
+const assert = chai.assert;
 
-var Promise = require('bluebird');
-var promisify = require('../../lib/promisify');
+const Promise = require('bluebird');
+const promisify = require('../../lib/promisify');
 
-var square = function(value, callback) {
+const square = (value, callback) => {
   if (!value || typeof value !== 'number')
     callback(new Error('Value not a number.'));
   else
     callback(null, value * value);
 };
 
-var squareAsync = function(value) {
+const squareAsync = (value) => {
   return promisify(square, value);
 };
 
-describe('promisify', function() {
+describe('promisify', () => {
 
-  describe('result', function() {
-    it('should return a Promise', function() {
-      var result = squareAsync(2);
+  describe('result', () => {
+    it('should return a Promise', () => {
+      const result = squareAsync(2);
       assert.instanceOf(result, Promise);
     });
   });
 
-  describe('fulfillment function', function() {
-    it('should fulfill a result when not rejected', function() {
+  describe('fulfillment function', () => {
+    it('should fulfill a result when not rejected', () => {
       squareAsync(2)
-        .then(function(res) {
+        .then((res) => {
           assert.equal(res, 4);
         })
-        .catch(function(e) {
+        .catch((e) => {
           assert.fail();
         });
 
     });
-    it ('should throw an error when rejected', function() {
+    it ('should throw an error when rejected', () => {
       squareAsync(2)
-        .then(function(res) {
+        .then((res) => {
           assert.fail();
         })
-        .catch(function(e) {
+        .catch((e) => {
           assert.ok(e);
         });
     });

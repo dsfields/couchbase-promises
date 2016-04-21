@@ -7,7 +7,7 @@ Just like the [Couchbase Node.js SDK](http://developer.couchbase.com/documentati
 
 The current version supports Couchbase Node.js SDK version 2.1.2.
 
-Promises are created using the [Bluebird](http://bluebirdjs.com/docs/getting-started.html) Promises library.  If you absolutely must use native ECMAScript Promises, then have a look at [couchbase-es-promises](https://www.npmjs.com/package/couchbase-promises).  I _highly_ recommend avoiding couchbase-es-promises, as Bluebird is compatible with native promises, and offers [an order of magnitude more performance](https://github.com/petkaantonov/bluebird/tree/master/benchmark).
+Promises are created using the [Bluebird](http://bluebirdjs.com/docs/getting-started.html) Promises library.  If you absolutely must use native ECMAScript Promises, then have a look at [couchbase-es-promises](https://www.npmjs.com/package/couchbase-es-promises).  I _highly_ recommend avoiding couchbase-es-promises, as Bluebird is compatible with native promises, and offers [an order of magnitude more performance](https://github.com/petkaantonov/bluebird/tree/master/benchmark).
 
 ## General Usage
 Usage is almost exactly the same as the native SDK, but with the added ability to use Promises instead of callbacks.
@@ -15,9 +15,9 @@ Usage is almost exactly the same as the native SDK, but with the added ability t
 A user repository module with a simple lookup...
 
 ```js
-let couchbase = require('couchbase-promises');
-let cluster = new couchbase.Cluster('couchbase://127.0.0.1');
-let bucket = cluster.openBucket();
+const couchbase = require('couchbase-promises');
+const cluster = new couchbase.Cluster('couchbase://127.0.0.1');
+const bucket = cluster.openBucket();
 
 function UserNotFoundError() {
   Error.call(this);

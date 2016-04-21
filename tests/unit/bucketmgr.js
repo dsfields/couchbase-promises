@@ -1,46 +1,47 @@
 'use strict';
 
-var chai = require('chai');
-var assert = chai.assert;
+const chai = require('chai');
 
-var BucketManager = require('../../lib/bucketmgr');
+const BucketManager = require('../../lib/bucketmgr');
 
-describe('BucketManager', function() {
-  describe('prototype', function() {
-    var proto = BucketManager.prototype;
+const assert = chai.assert;
 
-    describe('#flushAsync()', function() {
-      it('should be a function', function() {
+describe('BucketManager', () => {
+  describe('prototype', () => {
+    const proto = BucketManager.prototype;
+
+    describe('#flushAsync()', () => {
+      it('should be a function', () => {
         assert.isFunction(proto.flushAsync);
       });
     });
 
-    describe('#getDesignDocumentAsync()', function() {
-      it('should be a function', function() {
+    describe('#getDesignDocumentAsync()', () => {
+      it('should be a function', () => {
         assert.isFunction(proto.getDesignDocumentAsync);
       });
     });
 
-    describe('#getDesignDocumentsAsync()', function() {
-      it('should be a function', function() {
+    describe('#getDesignDocumentsAsync()', () => {
+      it('should be a function', () => {
         assert.isFunction(proto.getDesignDocumentsAsync);
       });
     });
 
-    describe('#insertDesignDocumentAsync()', function() {
-      it('should be a function', function() {
+    describe('#insertDesignDocumentAsync()', () => {
+      it('should be a function', () => {
         assert.isFunction(proto.insertDesignDocumentAsync);
       });
     });
 
-    describe('#removeDesignDocumentAsync()', function() {
-      it('should be a function', function() {
+    describe('#removeDesignDocumentAsync()', () => {
+      it('should be a function', () => {
         assert.isFunction(proto.removeDesignDocumentAsync);
       });
     });
 
-    describe('#upsertDesignDocumentAsync()', function() {
-      it('should be a function', function() {
+    describe('#upsertDesignDocumentAsync()', () => {
+      it('should be a function', () => {
         assert.isFunction(proto.upsertDesignDocumentAsync);
       });
     });
