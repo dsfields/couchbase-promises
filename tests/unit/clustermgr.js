@@ -1,28 +1,29 @@
 'use strict';
 
-var chai = require('chai');
-var assert = chai.assert;
+const chai = require('chai');
 
-var ClusterManager = require('../../lib/clustermgr');
+const ClusterManager = require('../../lib/clustermgr');
 
-describe('ClusterManager', function() {
-  describe('prototype', function() {
-    var proto = ClusterManager.prototype;
+const assert = chai.assert;
 
-    describe('#createBucketAsync()', function() {
-      it('should be a function', function() {
+describe('ClusterManager', () => {
+  describe('prototype', () => {
+    const proto = ClusterManager.prototype;
+
+    describe('#createBucketAsync()', () => {
+      it('should be a function', () => {
         assert.isFunction(proto.createBucketAsync);
       });
     });
 
-    describe('#listBucketsAsync()', function() {
-      it('should be a function', function() {
+    describe('#listBucketsAsync()', () => {
+      it('should be a function', () => {
         assert.isFunction(proto.listBucketsAsync);
       });
     });
 
-    describe('#removeBucketAsync()', function() {
-      it('should be a function', function() {
+    describe('#removeBucketAsync()', () => {
+      it('should be a function', () => {
         assert.isFunction(proto.removeBucketAsync);
       });
     });
