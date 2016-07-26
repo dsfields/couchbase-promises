@@ -2,7 +2,6 @@
 
 To contribute:
 
-* Install the [Gulp](http://gulpjs.com/) task runner.
 * Create a feature or bugfix branch of master.
 * Clone your branch.
 * Run `$ node install` from the project's root folder.
@@ -11,7 +10,7 @@ Contributions are welcome as long provided the follow the guidelines outlined be
 
 * All modifications must be made via pull request.
 
-* This library is designed to be a drop-in replacement for the Couchnode module.  All functionality must be non-breaking extensions of the base Couchnode module.
+* This library is designed to be a drop-in replacement for the `couchbase` module.  All functionality must be non-breaking extensions of the base `couchbase` module.
 
 * All updates must update the version number according to the [semver](http://semver.org/) guideline.
 
