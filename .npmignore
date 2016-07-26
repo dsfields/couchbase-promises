@@ -1,8 +1,11 @@
 .eslintrc
+.git
+.gitignore
 .idea
 .npmrc
-gulpfile.js
+.travis.yml
+coverage
 node_modules
+NOTES.md
 npm-debug.log
 tests
-NOTES.md
