@@ -52,7 +52,7 @@ The the `couchbase` module only provides batch operation support for key lookups
 
 ##### `Bucket.prototype.insertMultiAsync(docs, options)`
 
-Inserts multiple documents into the bucket.  This method will create individual insert operations for each document, and parallelize their execution with [`Promisea.all()`](http://bluebirdjs.com/docs/api/promise.all.html).
+Inserts multiple documents into the bucket.  This method will create individual insert operations for each document using [`Promise.all()`](http://bluebirdjs.com/docs/api/promise.all.html).
 
 __Returns:__ a `Promise` that resolves with a [`Summary`](#summary-class) object.  This `Promise` will always be fulfilled.  Any errors that occur will be specified in the resolved `Summary`.
 
@@ -63,7 +63,7 @@ __Parameters__
 
 ##### `Bucket.prototype.removeMultiAsyc(keys, options)`
 
-Removes multiple documents in the bucket.  This method will create individual remove operations for each key, and parallelize their execution with `Promisea.all()`.
+Removes multiple documents in the bucket.  This method will create individual remove operations for each key using with `Promisea.all()`.
 
 __Returns:__ a `Promise` that resolves with a [`Summary`](#summary-class) object.  This `Promise` will always be fulfilled.  Any errors that occur will be specified in the resolved `Summary`.
 
