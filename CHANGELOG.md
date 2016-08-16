@@ -2,8 +2,11 @@
 
 ## 2.0
 
+### 2.1.1
+  * Updating `couchbase` to the latest version (2.2.2).
+
 ### 2.1.0
-  * Updating Couchnode to the latest version 2.2.1.
+  * Updating `couchbase` to the latest version (2.2.1).
   * Adding additional methods `Bucket.prototype.insertMultiAsync` and `Bucket.prototype.removeMultiAsync`.
   * Fixing bug where `callback` parameter is not getting set correctly.
 
