@@ -21,6 +21,13 @@ describe('Couchbase', () => {
     });
   });
 
+  describe('#SearchQuery', () => {
+    it('should reference native couchbase.SearchQuery', (done) => {
+      assert.strictEqual(couchbase.SearchQuery, nativeCouch.SearchQuery);
+      done();
+    });
+  });
+
   describe('#SpatialQuery', () => {
     it('should reference native couchbase.SpatialQuery', (done) => {
       assert.strictEqual(couchbase.SpatialQuery, nativeCouch.SpatialQuery);
@@ -41,6 +48,13 @@ describe('Couchbase', () => {
     describe('#N1qlQuery', () => {
       it('should reference native couchbase.N1qlQuery', (done) => {
         assert.strictEqual(mock.N1qlQuery, nmock.N1qlQuery);
+        done();
+      });
+    });
+
+    describe('#SearchQuery', () => {
+      it('should reference native couchbase.SpatialQuery', (done) => {
+        assert.strictEqual(mock.SearchQuery, nmock.SearchQuery);
         done();
       });
     });
