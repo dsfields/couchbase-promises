@@ -2,7 +2,7 @@
   "name": "couchbase-promises",
   "longName": "Couchbase Promises",
   "description": "An A+ Promises wrapper for the Couchbase SDK.",
-  "version": "2.1.1",
+  "version": "2.2.0",
 
   "dependencies": {
     "bluebird": "~3.4.1",

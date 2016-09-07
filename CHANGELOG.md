@@ -2,6 +2,9 @@
 
 ## 2.0
 
+### 2.2.0
+  * Adding support for SearchQuery (thanks to https://github.com/goatandsheep).
+
 ### 2.1.1
   * Updating `couchbase` to the latest version (2.2.2).
 
