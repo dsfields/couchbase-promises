@@ -1012,5 +1012,160 @@ describe('Bucket', () => {
           });
       });
     });
+    
+    describe('#upsertMultiAsync', () => {
+      const docs = {
+        a: 42,
+        b: 24
+      };
+
+      const newDocs = {
+        a: 42,
+        b: 24
+      }
+      newDocs[strKey] = testStr;
+
+      it('should return a Promise', (done) => {
+        const result = bucket.upsertMultiAsync(docs);
+        assert.instanceOf(result, Promise);
+        done();
+      });
+
+      it('should throw if docs not an object', (done) => {
+        assert.throws(() => {
+          bucket.upsertMultiAsync(42)
+            .then((res) => {
+              assert.fail();
+            });
+        }, TypeError);
+        done();
+      });
+
+      it('should throw if docs is an array', (done) => {
+        assert.throws(() => {
+          bucket.upsertMultiAsync([42])
+            .then((res) => {
+              assert.fail();
+            });
+        }, TypeError);
+        done();
+      });
+
+      it('should throw if docs is null', (done) => {
+        assert.throws(() => {
+          bucket.upsertMultiAsync(null)
+            .then((res) => {
+              assert.fail();
+            });
+        }, TypeError);
+        done();
+      });
+
+      it('should return summary with array of keys', (done) => {
+        bucket.upsertMultiAsync(newDocs)
+          .then((res) => {
+            assert.isArray(res.keys);
+            done();
+          });
+      });
+
+      it('should return summary with key for all docs', (done) => {
+        bucket.upsertMultiAsync(newDocs)
+          .then((res) => {
+            assert.include(res.keys, 'a');
+            assert.include(res.keys, 'b');
+            assert.include(res.keys, strKey);
+            done();
+          });
+      });
+
+      it('should return summary with hasErrors Boolean flag', (done) => {
+        bucket.upsertMultiAsync(newDocs)
+          .then((res) => {
+            assert.isBoolean(res.hasErrors);
+            done();
+          });
+      });
+
+      it('should return summary with hasErrors=false when no error', (done) => {
+        bucket.upsertMultiAsync(docs)
+          .then((res) => {
+            assert.isFalse(res.hasErrors);
+            done();
+          });
+      });
+
+      it('should return summary with object of results', (done) => {
+        bucket.upsertMultiAsync(newDocs)
+          .then((res) => {
+            assert.isObject(res.results);
+            done();
+          });
+      });
+
+      it('should return summary with result for all docs', (done) => {
+        bucket.upsertMultiAsync(newDocs)
+          .then((res) => {
+            assert.deepProperty(res, 'results.a');
+            assert.deepProperty(res, 'results.b');
+            assert.deepProperty(res, 'results.' + strKey);
+            done();
+          });
+      });
+
+      it('should insert key-values from Map', (done) => {
+        const docsMap = new Map();
+        docsMap.set('a', 42);
+        docsMap.set('b', 24);
+
+        bucket.upsertMultiAsync(docsMap)
+          .then((res) => {
+            assert.isOk(res);
+            return bucket.getMultiAsync(['a', 'b'])
+          })
+          .then((res) => {
+            assert.property(res, 'a');
+            assert.property(res, 'b');
+            assert.strictEqual(res.a.value, docsMap.get('a'));
+            assert.strictEqual(res.b.value, docsMap.get('b'));
+            done();
+          });
+      });
+
+      it('should insert key-values from object', (done) => {
+        bucket.upsertMultiAsync(docs)
+          .then((res) => {
+            assert.isOk(res);
+            return bucket.getMultiAsync(['a', 'b'])
+          })
+          .then((res) => {
+            assert.property(res, 'a');
+            assert.property(res, 'b');
+            assert.strictEqual(res.a.value, docs.a);
+            assert.strictEqual(res.b.value, docs.b);
+            done();
+          });
+      });
+
+      it('should insert new docs when there are old docs', (done) => {
+        bucket.upsertMultiAsync(newDocs)
+          .then((res) => {
+            assert.isTrue(res.results.a.success);
+            assert.isTrue(res.results.b.success);
+            assert.isTrue(res.results[strKey].success);
+            return bucket.getMultiAsync(['a', 'b', strKey]);
+          })
+          .then((res) => {
+            assert.property(res, 'a');
+            assert.property(res, 'b');
+            assert.property(res, strKey);
+            assert.strictEqual(res.a.value, newDocs.a);
+            assert.strictEqual(res.b.value, newDocs.b);
+            assert.strictEqual(res[strKey].value, newDocs[strKey]);
+            done();
+          });
+      });
+
+    });
   });
 });
