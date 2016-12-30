@@ -11,7 +11,7 @@ const CouchbaseError = couchbase.Error;
 test(require('bluebird'), 'bluebird');
 test(Promise, 'native');
 test(require('kew'), 'kew');
-test(require('Q'), 'Q');
+test(require('q'), 'Q');
 test(require('rsvp'), 'Rsvp');
 
 function test(library, libraryName) {
