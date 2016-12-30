@@ -13,6 +13,7 @@
     + Adding ability to specify `Promise` library.
       - Adding read-only property `couchbase.Promise`.
       - Adding method `couchbase.setPromiseLib()`.
+      - Adding method `couchbase.revertPromiseLib()`.
     + Adding support for `Bucket` as an `EventEmitter`.
       - Adding method `Bucket.prototype.addListener()`.
       - Adding method `Bucket.prototype.emit()`.
@@ -62,7 +63,7 @@
       - Adding method `Bucket.prototype.setRemoveAsync()`.
       - Adding method `Bucket.prototype.setSize()`.
       - Adding method `Bucket.prototype.setSizeAsync()`.
-    + Enhancing support for multi-operations:
+    + Enhancing support for multi operations:
       - Adding method `Bucket.prototype.appendMultiAsync()`.
       - Adding method `Bucket.prototype.counterMultiAsync()`.
       - Adding method `Bucket.prototype.getAndLockMultiAsync()`.

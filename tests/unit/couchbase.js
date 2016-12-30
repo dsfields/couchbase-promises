@@ -7,6 +7,23 @@ const Cluster = require('../../lib/cluster');
 const couchbase = require('../../lib/couchbase');
 
 describe('Couchbase', () => {
+  describe('#CbasQuery', () => {
+    it('should reference native couchbase.CbasQuery', (done) => {
+      assert.strictEqual(couchbase.CbasQuery, nativeCouch.CbasQuery);
+      done();
+    });
+  });
+
+  describe('#ClassicAuthenticator', () => {
+    it('should reference Cluster', (done) => {
+      assert.strictEqual(
+        couchbase.ClassicAuthenticator,
+        nativeCouch.ClassicAuthenticator
+      );
+      done();
+    });
+  });
+
   describe('#Cluster', () => {
     it('should reference Cluster', (done) => {
       assert.strictEqual(couchbase.Cluster, Cluster);
@@ -14,9 +31,23 @@ describe('Couchbase', () => {
     });
   });
 
+  describe('#MutationState', () => {
+    it('should reference native couchbase.MutationState', (done) => {
+      assert.strictEqual(couchbase.MutationState, nativeCouch.MutationState);
+      done();
+    });
+  });
+
   describe('#N1qlQuery', () => {
     it('should reference native couchbase.N1qlQuery', (done) => {
       assert.strictEqual(couchbase.N1qlQuery, nativeCouch.N1qlQuery);
+      done();
+    });
+  });
+
+  describe('#SearchFacet', () => {
+    it('should reference native couchbase.SearchFacet', (done) => {
+      assert.strictEqual(couchbase.SearchFacet, nativeCouch.SearchFacet);
       done();
     });
   });
@@ -48,13 +79,6 @@ describe('Couchbase', () => {
     describe('#N1qlQuery', () => {
       it('should reference native couchbase.N1qlQuery', (done) => {
         assert.strictEqual(mock.N1qlQuery, nmock.N1qlQuery);
-        done();
-      });
-    });
-
-    describe('#SearchQuery', () => {
-      it('should reference native couchbase.SpatialQuery', (done) => {
-        assert.strictEqual(mock.SearchQuery, nmock.SearchQuery);
         done();
       });
     });

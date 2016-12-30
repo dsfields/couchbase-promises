@@ -4,8 +4,10 @@
 .idea
 .npmrc
 .travis.yml
+.istanbul.yml
 coverage
 node_modules
-NOTES.md
+CHANGELOG.md
+CONTRIBUTING.md
 npm-debug.log
 tests

@@ -1,17 +1,21 @@
 {
   "name": "couchbase-promises",
   "longName": "Couchbase Promises",
-  "description": "An A+ Promises wrapper for the Couchbase SDK.",
-  "version": "2.2.0",
+  "description": "An A+ Promises wrapper for the Couchbase SDK with added support for batch mutation operations.",
+  "version": "3.0.0",
 
   "dependencies": {
-    "bluebird": "~3.4.1",
-    "couchbase": "~2.2.2"
+    "bluebird": "~3.4.6",
+    "couchbase": "~2.2.5",
+    "elv": "^1.0.1"
   },
   "devDependencies": {
     "chai": "^3.5.0",
     "istanbul": "^0.4.0",
-    "mocha": "^2.4.5"
+    "kew": "^0.7.0",
+    "mocha": "^2.4.5",
+    "q": "^1.4.1",
+    "rsvp": "^3.3.3"
   },
   "keywords": [
     "couchbase",
