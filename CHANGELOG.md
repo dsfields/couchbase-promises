@@ -2,6 +2,11 @@
 
 ## 3.0
 
+### 3.0.1
+
+  * __Bug Fix__
+    + The native `couchbase` Mock library uses `options` provided to mutation methods in a very strange way.  It adds a `haskey` property to the provided `options` argument, which is then used for get operations.  This causes a problem if you reuse the options object.  This change clones the `options` object so that your unit tests work as expected.
+
 ### 3.0.0
 
   * __Breaking Changes__
