@@ -19,7 +19,7 @@ Just like the [Couchbase Node.js SDK](http://developer.couchbase.com/documentati
 
 Additionally, this library provides enhanced support for bulk operations.  The the native `couchbase` module only provides batch operation support for key lookups (via [`Bucket.prototype.getMulti()`](http://docs.couchbase.com/sdk-api/couchbase-node-client-2.2.5/Bucket.html#getMulti)).  The `couchbase-promises` module provides a extra methods on the `Bucket` class for performing batch operations.  See the [API](#api) documentation for more information.
 
-The current version supports Couchbase Node.js SDK version 2.2.5.
+The current version supports Couchbase Node.js SDK version 2.3.0.
 
 ## Usage
 Usage is almost exactly the same as the native SDK, but with the added ability to use Promises instead of callbacks.
@@ -109,7 +109,7 @@ In addition to the added `*Async()` methods, the `couchbase-promises` module inc
 
       + `defaultOptions`: _(optional)_ default options for each operation.
 
-  * `Bucket.prototype.getAndLockMultiAsync(keys [, defaultOptions])`
+  * `Bucket.prototype.getAndLockMultiAsync(keys [, defaultOptions])`:
     Gets the document for each key, and adds an exclusive lock for each entry.
 
     Returns a `Promise` that resolves with a [`Summary`](#summary) object.  This `Promise` will always be fulfilled.  Any errors that occur will be specified in the resolved `Summary`.
@@ -124,7 +124,7 @@ In addition to the added `*Async()` methods, the `couchbase-promises` module inc
 
       + `defaultOptions`: _(optional)_ default options for each operation.
 
-  * `Bucket.prototype.getAndTouchMultiAsync(docs [, defaultOptions])`
+  * `Bucket.prototype.getAndTouchMultiAsync(docs [, defaultOptions])`:
     Gets the document for each key, sets their TTL value.
 
     Returns a `Promise` that resolves with a [`Summary`](#summary) object.  This `Promise` will always be fulfilled.  Any errors that occur will be specified in the resolved `Summary`.
@@ -138,6 +138,25 @@ In addition to the added `*Async()` methods, the `couchbase-promises` module inc
         - `options`: _(optional)_ object that contains the [options used for getAndTouch](http://docs.couchbase.com/sdk-api/couchbase-node-client-2.2.5/Bucket.html#getAndTouch).  If this key is absent, options provided by `defaultOptions` will be used.  If you provide this key as part of a `docs` entry, but set it to `undefined` or `null` no options will be used on the insert, and regardless of whether or not `defaultOptions` was provided.
 
       + `defaultOptions`: _(optional)_ default options for each operation.
+
+  * `Bucket.prototype.getMultiAsync(keys [, options])`:
+    Gets multiple documents given an array of keys.  The `getMulti()` method is the only batch operation supported by the native `couchbase` module.
+
+    Returns a `Promise`.  This `Promise` will only reject in the event of a catastrophic failure.  Errors for individual keys will not result in a rejection.  The `Promise` will resolve with an object that looks similar to the `Summary` object, and contains the following keys:
+
+      + `hasErrors`: a `Boolean` value indicating whether or not key failed.
+
+      + `errors`: an integer representing the number of failed keys.
+
+      + `results`: the raw results object from the native `getMulti()` method.
+
+    Parameters include:
+
+      + `keys`: _(required)_ an array of strings to lookup.
+
+      + `options`: _(optional)_ an object with the following keys:
+
+        - `batch_size`: _(optional)_ a number that indicates the size of each batch that is used to fetch the specified keys. A batch size of `0` indicates to perform all operations simultaneously.  The default is `0`.
 
   * `Bucket.prototype.getReplicaMultiAsync(keys [, defaultOptions])`:
     Gets documents for the specified keys from replica nodes.

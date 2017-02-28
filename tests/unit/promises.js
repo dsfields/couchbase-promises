@@ -172,6 +172,96 @@ describe('Promises', () => {
     });
   });
 
+  describe('#promisifyNativeMulti', () => {
+    let originalArgs;
+    const originalErrors = 1;
+    const originalResult = {
+      foo: { cas: 123, value: { bar: 42 } },
+      baz: { error: new Error('Imma error') }
+    };
+
+    const original = function() {
+      let callback;
+
+      for (let i = 0; i < arguments.length; i++) {
+        const val = arguments[i];
+        if (i === arguments.length - 1) callback = val;
+        else originalArgs.push(val);
+      }
+
+      callback(originalErrors, originalResult);
+    };
+
+    beforeEach(() => {
+      originalArgs = [];
+    });
+
+    it('should return a Promise', (done) => {
+      const result = Promises.promisifyNativeMulti(original, 42);
+      assert.instanceOf(result, Promises.Promise);
+      done();
+    });
+
+    it('should call original with all arguments except undefined', (done) => {
+      Promises.promisifyNativeMulti(original, 42, undefined, 'foo')
+        .then(() => {
+          assert.lengthOf(originalArgs, 2);
+          done();
+        })
+        .catch((err) => {
+          done(err);
+        });
+    });
+
+    it('should reject when err is not a number and is failure', (done) => {
+      const throwsError = function(callback) {
+        callback(new Error('Imma error'));
+      };
+
+      Promises.promisifyNativeMulti(throwsError)
+        .then(() => {
+          done(new Error('I should not have been called.'));
+        })
+        .catch((err) => {
+          assert.isOk(err);
+          done();
+        });
+    });
+
+    it('should resolve with hasError=true when err count > 0', (done) => {
+      Promises.promisifyNativeMulti(original)
+        .then((res) => {
+          assert.isTrue(res.hasErrors);
+          done();
+        })
+        .catch((err) => {
+          done(err);
+        });
+    });
+
+    it('should resolve with errors count', (done) => {
+      Promises.promisifyNativeMulti(original)
+        .then((res) => {
+          assert.strictEqual(res.errors, originalErrors);
+          done();
+        })
+        .catch((err) => {
+          done(err);
+        });
+    });
+
+    it('should resolve with results', (done) => {
+      Promises.promisifyNativeMulti(original)
+        .then((res) => {
+          assert.strictEqual(res.results, originalResult);
+          done();
+        })
+        .catch((err) => {
+          done(err);
+        });
+    });
+  });
+
   describe('#promisifyMulti', () => {
     const squareMultiAsync = function(value) {
       return promisifyMulti.call({}, square, 2);

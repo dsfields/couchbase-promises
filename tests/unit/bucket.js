@@ -405,14 +405,6 @@ function test(library, libraryName) {
         });
       });
 
-      describe('#eventNames', () => {
-        it('should return an array', (done) => {
-          const result = bucket.eventNames();
-          assert.isArray(result);
-          done();
-        });
-      });
-
       describe('#get', () => {
         it('should get a document', (done) => {
           bucket.get(strKey, (err, res) => {
@@ -541,10 +533,10 @@ function test(library, libraryName) {
         it('should get multiple documents', (done) => {
           bucket.getMultiAsync([strKey, numKey])
             .then((res) => {
-              assert.property(res, strKey);
-              assert.property(res, numKey);
-              assert.strictEqual(res[strKey].value, testStr);
-              assert.strictEqual(res[numKey].value, testNum);
+              assert.property(res.results, strKey);
+              assert.property(res.results, numKey);
+              assert.strictEqual(res.results[strKey].value, testStr);
+              assert.strictEqual(res.results[numKey].value, testNum);
               done();
             });
         });
@@ -733,10 +725,10 @@ function test(library, libraryName) {
               return bucket.getMultiAsync(['a', 'b'])
             })
             .then((res) => {
-              assert.property(res, 'a');
-              assert.property(res, 'b');
-              assert.strictEqual(res.a.value, docsMap.get('a').value);
-              assert.strictEqual(res.b.value, docsMap.get('b').value);
+              assert.property(res.results, 'a');
+              assert.property(res.results, 'b');
+              assert.strictEqual(res.results.a.value, docsMap.get('a').value);
+              assert.strictEqual(res.results.b.value, docsMap.get('b').value);
               done();
             });
         });
@@ -748,10 +740,10 @@ function test(library, libraryName) {
               return bucket.getMultiAsync(['a', 'b'])
             })
             .then((res) => {
-              assert.property(res, 'a');
-              assert.property(res, 'b');
-              assert.strictEqual(res.a.value, docs.a.value);
-              assert.strictEqual(res.b.value, docs.b.value);
+              assert.property(res.results, 'a');
+              assert.property(res.results, 'b');
+              assert.strictEqual(res.results.a.value, docs.a.value);
+              assert.strictEqual(res.results.b.value, docs.b.value);
               done();
             });
         });
@@ -764,10 +756,10 @@ function test(library, libraryName) {
               return bucket.getMultiAsync(['a', 'b']);
             })
             .then((res) => {
-              assert.property(res, 'a');
-              assert.property(res, 'b');
-              assert.strictEqual(res.a.value, invalidDocs.a.value);
-              assert.strictEqual(res.b.value, invalidDocs.b.value);
+              assert.property(res.results, 'a');
+              assert.property(res.results, 'b');
+              assert.strictEqual(res.results.a.value, invalidDocs.a.value);
+              assert.strictEqual(res.results.b.value, invalidDocs.b.value);
               done();
             });
         });
@@ -1280,22 +1272,6 @@ function test(library, libraryName) {
         });
       });
 
-      describe('#prependListener', () => {
-        it('should return self', (done) => {
-          const result = bucket.prependListener('connect', () => {});
-          assert.strictEqual(result, bucket);
-          done();
-        });
-      });
-
-      describe('#prependOnceListener', () => {
-        it('should return self', (done) => {
-          const result = bucket.prependOnceListener('connect', () => {});
-          assert.strictEqual(result, bucket);
-          done();
-        });
-      });
-
       describe('#prepend', () => {
         it('should prepend value', (done) => {
           bucket.prepend(strKey, 'y', (err, res) => {
@@ -1600,9 +1576,13 @@ function test(library, libraryName) {
               assert.isOk(res);
               return bucket.getMultiAsync(keys);
             })
-            .catch((err) => {
-              assert.strictEqual(err, keys.length);
+            .then((res) => {
+              assert.property(res.results[strKey], 'error');
+              assert.property(res.results[numKey], 'error');
               done();
+            })
+            .catch((err) => {
+              done(err);
             });
         });
 
@@ -1616,9 +1596,13 @@ function test(library, libraryName) {
               assert.isOk(res);
               return bucket.getMultiAsync(keys);
             })
-            .catch((err) => {
-              assert.strictEqual(err, keys.length);
+            .then((res) => {
+              assert.property(res.results[strKey], 'error');
+              assert.property(res.results[numKey], 'error');
               done();
+            })
+            .catch((err) => {
+              done(err);
             });
         });
 
@@ -1632,9 +1616,13 @@ function test(library, libraryName) {
               assert.isOk(res);
               return bucket.getMultiAsync(keys);
             })
-            .catch((err) => {
-              assert.strictEqual(err, keys.length);
+            .then((res) => {
+              assert.property(res.results[strKey], 'error');
+              assert.property(res.results[numKey], 'error');
               done();
+            })
+            .catch((err) => {
+              done(err);
             });
         });
       });
