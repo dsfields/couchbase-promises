@@ -2,6 +2,11 @@
 
 ## 4.0
 
+### 4.0.1
+
+  * __Bug Fix__
+    + Fixing incorrect peer dependency version.
+
 ### 4.0.0
 
   * __Breaking Changes__
