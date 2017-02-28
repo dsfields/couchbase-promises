@@ -29,7 +29,7 @@
   "license": "MIT",
   "main": "./lib/couchbase",
   "peerDependencies": {
-    "couchbase": "2.2.x"
+    "couchbase": "2.3.x"
   },
   "private": false,
   "repository": {
