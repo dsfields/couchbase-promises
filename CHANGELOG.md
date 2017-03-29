@@ -2,6 +2,11 @@
 
 ## 4.0
 
+### 4.1.0
+
+  * __Technical Debt__
+    + Updating `bluebird` version to 3.5.0.
+
 ### 4.0.1
 
   * __Bug Fix__
