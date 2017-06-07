@@ -6,7 +6,7 @@
 
   "dependencies": {
     "bluebird": "^3.5.0",
-    "couchbase": "~2.3.0",
+    "couchbase": "~2.3.4",
     "elv": "^1.0.1"
   },
   "devDependencies": {
