@@ -2,6 +2,9 @@
 
 ## 4.0
 
+### 4.3.0
+    + Updating `couchbase` version to 2.4.0.
+
 ### 4.2.0
   * __Technical Debt__
     + Updating `couchbase` version to 2.3.4.
