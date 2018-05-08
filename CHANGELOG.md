@@ -2,6 +2,18 @@
 
 ## 4.0
 
+### 4.4.0
+  * __New Features__
+    + Adding new methods to `ClusterManager`
+      - Adding method `ClusterManager.prototype.getUser()`
+      - Adding method `ClusterManager.prototype.getUserAsync()`
+      - Adding method `ClusterManager.prototype.getUsers()`
+      - Adding method `ClusterManager.prototype.getUsersAsync()`
+      - Adding method `ClusterManager.prototype.removeUser()`
+      - Adding method `ClusterManager.prototype.removeUserAsync()`
+      - Adding method `ClusterManager.prototype.upsertUser()`
+      - Adding method `ClusterManager.prototype.upsertUserAsync()`
+
 ### 4.3.0
     + Updating `couchbase` version to 2.4.0.
 
