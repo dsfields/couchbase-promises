@@ -124,5 +124,109 @@ function test(library, libraryName) {
           });
       });
     });
+
+    describe('#getUsers', () => {
+      it('should execute', (done) => {
+        mgr.getUsers('test', (err, res) => {
+          assert.isNotOk(err);
+          assert.isOk(res);
+          done();
+        });
+      });
+    });
+
+    describe('#getUsersAsync', () => {
+      it('should return a Promise', (done) => {
+        const result = mgr.getUsersAsync('test');
+        assert.instanceOf(result, couchbase.Promise);
+        done();
+      });
+
+      it('should execute', (done) => {
+        mgr.getUsersAsync('test')
+          .then((res) => {
+            assert.isOk(res);
+            done();
+          });
+      });
+    });
+
+    describe('#getUser', () => {
+      it('should execute', (done) => {
+        mgr.getUser('test', 'test', (err, res) => {
+          assert.isNotOk(err);
+          assert.isOk(res);
+          done();
+        });
+      });
+    });
+
+    describe('#getUserAsync', () => {
+      it('should return a Promise', (done) => {
+        const result = mgr.getUserAsync('test', 'test');
+        assert.instanceOf(result, couchbase.Promise);
+        done();
+      });
+
+      it('should execute', (done) => {
+        mgr.getUserAsync('test', 'test')
+          .then((res) => {
+            assert.isOk(res);
+            done();
+          });
+      });
+    });
+
+    describe('#removeUser', () => {
+      it('should execute', (done) => {
+        mgr.removeUser('test', 'test', (err, res) => {
+          assert.isNotOk(err);
+          assert.isOk(res);
+          done();
+        });
+      });
+    });
+
+    describe('#removeUserAsync', () => {
+      it('should return a Promise', (done) => {
+        const result = mgr.removeUserAsync('test', 'test');
+        assert.instanceOf(result, couchbase.Promise);
+        done();
+      });
+
+      it('should execute', (done) => {
+        mgr.removeUserAsync('test', 'test')
+          .then((res) => {
+            assert.isOk(res);
+            done();
+          });
+      });
+    });
+
+    describe('#upsertUser', () => {
+      it('should execute', (done) => {
+        mgr.upsertUser('test', 'test', {}, (err, res) => {
+          assert.isNotOk(err);
+          assert.isOk(res);
+          done();
+        });
+      });
+    });
+
+    describe('#upsertUserAsync', () => {
+      it('should return a Promise', (done) => {
+        const result = mgr.upsertUserAsync('test', 'test', {});
+        assert.instanceOf(result, couchbase.Promise);
+        done();
+      });
+
+      it('should execute', (done) => {
+        mgr.upsertUserAsync('test', 'test', {})
+          .then((res) => {
+            assert.isOk(res);
+            done();
+          });
+      });
+    });
   });
 }
