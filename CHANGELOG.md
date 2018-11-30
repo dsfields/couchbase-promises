@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.0
+
+### 5.0.0
+  * __Technical Debt__
+    + Updating `couchbase` version to 2.4.5.
+
 ## 4.0
 
 ### 4.3.0
@@ -23,7 +29,7 @@
 ### 4.0.0
 
   * __Breaking Changes__
-    + The `Bucket.prototype.getMultiAsync()` method now resolves with a new summary object, and will not reject if any key fails.
+    + The `Bucket.prototype.getMultiAsync()` method now resolves with a new summary object, and will not reject if any keys fail.
 
     + Removing most `EventEmitter` methods, as the native Couchbase `Bucket` class no longer exposes the following:
       - `Bucket.prototype.eventNames()`

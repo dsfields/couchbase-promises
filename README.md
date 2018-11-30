@@ -2,10 +2,6 @@
 
 [![Build Status](https://secure.travis-ci.org/dsfields/couchbase-promises.svg)](https://travis-ci.org/dsfields/couchbase-promises)
 
-[![Dependency Status](https://img.shields.io/david/bentonam/couchbase-promises.svg?maxAge=2592000&style=flat-square)](https://david-dm.org/dsfields/couchbase-promises)
-
-[![devDependency Status](https://img.shields.io/david/dev/dsfields/couchbase-promises.svg?maxAge=2592000&style=flat-square)](https://david-dm.org/dsfields/couchbase-promises#info=devDependencies)
-
 __Contents__
 
   * [Overview](#overview)
